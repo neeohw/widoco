@@ -1,5 +1,5 @@
 # ----
-FROM maven:3.8.3-openjdk-17-slim AS build_image
+FROM maven:3.9.12-eclipse-temurin-11-alpine AS build_image
 
 WORKDIR /var/build/widoco
 
@@ -9,7 +9,7 @@ RUN mvn package && \
     mv ./JAR/widoco*.jar ./JAR/widoco.jar
 
 # ----
-FROM openjdk:17-slim
+FROM eclipse-temurin:11-jdk-noble
 
 RUN apt-get update
 RUN apt-get install -y libfreetype6 fontconfig
